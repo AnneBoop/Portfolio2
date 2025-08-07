@@ -1,0 +1,113 @@
+---
+title: "Looking ahead"
+author: "Anne Bakker"
+date: "2023-11-20"
+output: html_document
+editor_options: 
+  markdown: 
+    wrap: sentence
+---
+
+# Vrije ruimte
+
+## Interessante onderwerpen
+
+**Neurogenomica:**
+
+\- Integratie van genomics en neurobiologie om de genetische basis van complex gedrag bij dieren te ontrafelen.
+
+\- Analyse van genexpressiegegevens in de hersenen van dieren in relatie tot specifiek gedrag.
+
+**Neuro-informatica voor gedragsanalyse:**
+
+\- Ontwikkeling van geavanceerde informatica-tools voor het analyseren en kwantificeren van gedrag op basis van neurologische gegevens.
+
+\- Toepassing van machine learning voor het herkennen van patronen in de hersenactiviteit van dieren.
+
+**Single-Cell Transcriptomics in Tumorbiologie:**
+
+\- Gebruik van single-cell RNA-sequencing om de heterogeniteit van tumorcellen op moleculair niveau te begrijpen.
+
+\- Data science-methoden toepassen om patronen in de expressieprofielen van individuele tumorcellen te identificeren.
+
+**Evolutie van Tumorcellen:**
+
+\- Studie naar de evolutionaire dynamiek van tumorcellen en het ontstaan van subclones.
+
+\- Data science voor het modelleren van tumorcel-evolutie op basis van sequentiegegevens.
+
+**Interactie tussen Tumor en Microbioom:**
+
+\- Onderzoek naar de rol van het microbioom in de tumormicro-omgeving.
+
+\- Data science-analyse van microbiële samenstelling en interacties in relatie tot tumorontwikkeling.
+
+## Uiteindelijke keuze voor vrije ruimte
+
+Single cell RNA sequencing om de heterogeniteit van tumorcellen te achterhalen in gen expressie.
+Met data vanuit de database.
+
+### Voorbeeld:
+
+[https://www.cell.com/cell-reports/pdf/S2211-1247(17)31462-6.pdf](https://www.cell.com/cell-reports/pdf/S2211-1247(17)31462-6.pdf){.uri}
+
+#### Geo:
+
+<https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE84465>
+
+## Software & packages
+
+Ik wil het gaan uitvoeren in R.
+Met de packages; Seurat SingleR DESeq2 ggplot2 tSNE
+
+## Vrije keuze stappenplan **OUD**
+
+**Dag 1:**
+
+\- 2 uur: Onderzoek doen naar hoe scRNA seq werkt
+
+\- 2 uur: In combinatie met tumor cellen
+
+\- 3 uur: Datasets verzamelen van tumorcellen van bijvoorbeeld bronnen als GEO
+
+\- 1 uur: Datakwaliteit controle (FastQC)
+
+**Dag 2:**
+
+\- 4 uur: Workflow reproduceren en mee oefenen
+
+\- 2 uur: Workflow uitschrijven
+
+\- 2 uur: Data analyse; leer werken met packages als `seurat` en `scater` voor scRNA-seq-analyse.
+
+**Dag 3:**
+
+\- 8 uur: Werk de workflow uit (PCA; clusters ontdekken, gen expressie analyse, grafieken etc.)
+
+**Dag 4:**
+
+\- 2 uur: Overig werk afmaken van de workflow
+
+\- 2 uur: Data interpreteren
+
+\- 2 uur: Discussie punten
+
+## Vrije keuze plan
+
+### Data:
+
+GSE84465
+
+Samples hebben al kwaliteits controles gehad dmv fastQC.
+En ze zijn al aligned aan hg19 met STAR, de aligned reads zijn omgezet naar 'counts' met HTSeq.
+
+Van het onderzoek: [https://www.cell.com/cell-reports/pdf/S2211-1247(17)31462-6.pdf](https://www.cell.com/cell-reports/pdf/S2211-1247(17)31462-6.pdf){.uri}
+
+### Plan
+
+Ik wil de data analyseren op dezelfde manier als in het onderzoek, maar dan op mijn eigen manier.
+Het is een uitdaging omdat ik niet kan vinden hoe ze het precies hebben gedaan, dus ik ga mezelf leren hoe het moet.
+
+### Tools
+
+Tools die ik denk te willen gebruiken zijn; seurat, DESeq2, t-SNE, DNAcopy en ggplot2.
