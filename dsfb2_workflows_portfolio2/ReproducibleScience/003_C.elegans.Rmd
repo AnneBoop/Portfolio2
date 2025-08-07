@@ -1,77 +1,98 @@
 ---
 title: "C.elegans plate experiment"
 author: "Anne Bakker"
-date: "2023-12-05"
+date: "2025-8-7"
 output: html_document
 ---
 
-```{r bestand inladen}
+```{r bestand inladen, echo=FALSE, warning=FALSE, include=FALSE}
 #install.packages("tidyverse")
 library(tidyverse)
 library(readxl)
-C.elegans_data <- read_excel("~/Portofolio/dsfb2_workflows_portfolio/C.elegens/CE.LIQ.FLOW.062_Tidydata.xlsx")
+C.elegans_data <- read_excel("~/Portofolio/Portfolio2/dsfb2_workflows_portfolio2/ReproducibleScience/C.elegans/CE.LIQ.FLOW.062_Tidydata.xlsx")
 
+```
+
+# **Data inspecteren**
+
+```{r data inspecteren, echo=FALSE, warning=FALSE}
 head(C.elegans_data)
 ```
 
 De `RawData` is van data type double en `compName` en `compConcentration` zijn van data type character. `RawData` wordt gezien als type integer, deze moet dus omgezet worden. `compName` is goed als character en `compConcentration` moet als numerieke waarde.
 
-```{r aanpassen van data type}
+```{r aanpassen van data type, echo=FALSE, warning=FALSE}
 C.elegans_data$RawData <- as.integer(C.elegans_data$RawData)
 C.elegans_data$compConcentration <- as.numeric(C.elegans_data$compConcentration)
 ```
 
-```{r scatterplot}
+# **Scatter plot voor de verschillende chemicaliën en concentraties**
+
+
+```{r scatterplot, echo=FALSE, warning=FALSE}
 library(ggplot2)
 
 ggplot(C.elegans_data, aes(x = compConcentration, y = RawData, color=compName, shape=expType)) + geom_point(position = position_jitter(width = 0.1, height = 0), alpha = 0.6) + scale_x_log10() + labs(title = "Getelde nakomelingen na bepaalde \n concentratie compound toediening", x = "compConcentration (log10)", y = "Getelde nakomelingen na incubatie", color = "compName") + theme_minimal()
 ```
-**De positieve en negatieve controle**
-De positieve controle voor dit experiment is ethanol. De negatieve controle voor dit experiment is S-medium.
+
+# **Normaliseren van de data voor de negatieve controle**
+
+
+```{r normalised scatterplot, echo=FALSE, warning=FALSE}
+neg_control_mean <- mean(C.elegans_data$RawData[C.elegans_data$expType == "controlNegative"])
+
+C.elegans_data$RawData_normalized <- C.elegans_data$RawData / neg_control_mean
+
+
+ggplot(C.elegans_data, aes(x = compConcentration, y = RawData_normalized, color = compName, shape = expType)) + geom_point(position = position_jitter(width = 0.1, height = 0), alpha = 0.6) + scale_x_log10() + labs(title = "Genormaliseerde getelde nakomelingen na bepaalde \n concentratie compound toediening", x = "compConcentration (log10)", y = "Genormaliseerde getelde nakomelingen na incubatie", color = "compName") + theme_minimal()
+```
+
+
+# **Analyse**
+
+
+In dit experiment is de negatieve controle S-medium. De positieve controle voor dit experiment is ethanol. 
+
+Een positieve controle is belangrijk om mee te nemen in het experiment omdat het laat zien of het experiment echt werkt. Er wordt een bekend werkend middel toegediend. Als de positieve controle dan niet aanslaat is er iets fout met het experiment zelf.
+
+Een negatieve controle is belangrijk om mee te nemen in het experiment om te laten zien dat het effect dat waargenomen wordt ontstaat door de stof die wordt toegediend en niet door het experiment of omgeving zelf. De negatieve controle laat het 'normale' effect zien zonder interventie. Als je de data normaliseerd met de negatieve waarde heb je het 'echte' effect zonder impact van bijvoorbeeld de omgeving of het experiment.
+
+Een vehicle controle is een controle waarbij alleen het oplosmiddel waarin de chemicaliën normaal zit wordt toegediend. Dit wordt gedaan om uit te sluiten dat het oplosmiddel zelf het effect veroorzaakt. 
+
+Zoals eerder al besproken bij het belang van de negatieve controle is het normaliseren van de data van nut omdat je dan het effect van alleen de chemicaliën hebt. Ook wordt de interpretatie van de data makkelijker. Een waarde boven de 1 is namelijk een toename en een waarde onder de 1 is een afname. 
 
 
 
-## **Analyse plan**
+# **Analyse plan**
 
-**Data-inspectie:**
+**Stap 1: Data-inspectie**
+
 - Begin met het laden van het dataset en inspecteer de structuur ervan.
+
 - Controleer op ontbrekende waarden, uitschieters of andere kwaliteitsproblemen in de data.
 
-**Beschrijvende statistieken:**
-- Bereken en visualiseer beschrijvende statistieken voor belangrijke variabelen (bijv. gemiddelde, mediaan, standaardafwijking) om een eerste begrip van de data te krijgen.
+**Stap 2: Laad het `drc`-pakket in R**
 
-**Exploratieve Data-analyse (EDA):**
-- Maak verkennende visualisaties, zoals boxplots, om de verdeling van het aantal nakomelingen bij verschillende concentraties en voor verschillende verbindingen te observeren.
-- Gebruik scatterplots om de relatie tussen het aantal nakomelingen en de concentratie van de verbinding te visualiseren.
+- Installeer en laad het `drc`-pakket, dat modellen voor dose-response analyse bevat
 
-**Dosis-Respons Analyse:**
-- Voer een dosis-responsanalyse uit met behulp van een log-logistiek model om parameters zoals maximale respons, minimale respons, IC50-concentratie en de helling bij IC50 te schatten.
-- Gebruik een geschikt statistisch pakket of bibliotheek, zoals het {drc}-pakket in R, om de analyse uit te voeren.
+**Stap 3: Pas en log-logistisch model toe**
 
-**Vergelijk Verbindingen:**
-- Vergelijk de geschatte dosis-responscurves voor verschillende verbindingen om mogelijke verschillen in de IC50-waarden te identificeren.
-- Gebruik statistische tests of betrouwbaarheidsintervallen om de significantie van waargenomen verschillen te beoordelen.
+- Gebruik het `drm()`-commando om een dose-response model te vinden die past op de data
 
-**Hypothesetoetsing:**
-- Formuleer hypothesen om te testen of er een significant effect is van de concentratie van de verbinding op het aantal nakomelingen.
-- Maak gebruik van geschikte statistische tests (bijv. ANOVA) om de significantie van de waargenomen effecten te beoordelen.
+- Kies het vierparameter log-logistisch model (`LL.4()`). Die wordt het vaakst gebruikt bij dose-response modelling. De vierparameters zijn: helling van de dose-response curve, minimumrespons en maximumrespons en de IC50- waarde (hoeveel van een stof nodig is om een biologisch proces met 50% te remmen)
 
-**Post-hoc Analyse:**
-- Als er meerdere verbindingen zijn, overweeg dan post-hoc tests om specifieke paren van verbindingen te identificeren die significant van elkaar verschillen.
-- Pas aan voor meervoudige vergelijkingen indien nodig, om de familie-wise foutenmarge te beheersen.
+**Stap 4: Visualiseer dose-respons curve**
 
-**Validatie van het Model:**
-- Valideer het dosis-responsmodel door de geschiktheid van de pasvorm te controleren met behulp van diagnostische plots en statistische tests.
-- Beoordeel de betrouwbaarheid en nauwkeurigheid van de voorspellingen van het model.
+- Maak een grafiek waarin zowel de ruwe data als het model worden weergegeven
 
-**Interpretatie:**
-- Interpretatie van de resultaten in de context van de doelstellingen van het experiment.
-- Bespreek de biologische betekenis van waargenomen effecten en verschillen in dosis-responscurves tussen verbindingen.
+- De curve laat zien hoe de respons verandert bij toenemende concentratie van de stof.
 
-**Rapportage:**
-- Bereid een uitgebreid rapport voor waarin de analyse wordt samengevat, inclusief visualisaties, statistische resultaten en interpretaties.
-- Communiceer duidelijk eventuele bevindingen met betrekking tot het effect van concentraties en verschillen in dosis-responscurves tussen verbindingen.
+**Stap 5: Bepaal de IC50-waarde**
 
-```{r normaliseren}
+- Gebruik de `ED()`-functie om de IC50-waarde te berekenen
 
-```
+- Voor de Effective Dose (`ED()`) bij 50% doe je de code `ED(model, 50)`
+
+Dit geeft de dosis waarbij 50% effect wordt bereikt (IC50), op basis van het model. Het is dus op basis van het geschatte model en niet direct op de ruwe data.
+
+
