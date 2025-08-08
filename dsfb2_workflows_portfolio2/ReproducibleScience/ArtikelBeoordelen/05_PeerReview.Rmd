@@ -1,0 +1,123 @@
+---
+title: "Open Peer Review"
+author: "Anne Bakker"
+date: "2023-12-10"
+output: html_document
+---
+
+```{r iets anders, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE)
+```
+
+# Open peer review
+## Artikel
+
+Het artikel dat ik gekozen heb is "Paroxetine treatment in an animal model of depression improves sperm quality".
+
+Hier te vinden:
+
+Aghajani, R., Tavalaee, M., Sadeghi, N., Razi, M., Gharagozloo, P., Arbabian, M., Drevet, J. R., & Nasr-Esfahani, M. H. (2022). Paroxetine treatment in an animal model of depression improves sperm quality. PLOS ONE, 17(12), e0271217. https://doi.org/10.1371/journal.pone.0271217
+
+
+## Analyse van 'Repita'-criteria
+
+| Transparency Criteria       | Response type   |
+|-----------------------------|-----------------|
+| Study purpose               |       YES       |
+| Data availability statement |       YES       |
+| Data location               |https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9731436/bin/pone.0271217.s001.xlsx |
+| Study location              |       YES       |
+| Author review               |       YES       |  
+| Ethics statement            |       YES       |
+| Funding statement           |       YES       |
+| Code availability           |       NO        |
+
+## Verklaring
+Over het algemeen heeft de studie een goede score op de transparantie criteria. Het doel van de study is goed aangegeven in de introductie. Er is een data beschikbaarheid kopje te vinden onderaan het artikel. Met daarin een link naar de data locatie, die je brengt naar een excel sheet. Waar de studie heeft plaatsgevonden staat aangegeven en ook de auteur review. Er is kort een ethische verklaring gedaan in de methode. Ook is er aan gegeven dat er geen sprake is van financiering onderaan het artikel. Slechts de code beschikbaarheid mist. Er is in het artikel wel uitgelegd hoe ze de statistische analyse hebben uitgevoerd maar niet de exacte code is gegeven.
+
+## Algemene doelstelling 
+De algemene doelstelling van deze studie is om het effect van het antidepressivum paroxetine, een selectieve serotonineheropnameremmer (SSRI), op spermatogenese en spermatozoa-functie te onderzoeken. De studie maakt gebruik van een diermodel waarin depressie wordt geïnduceerd door een gedwongen zwemtest (FST). Daarnaast wordt gekeken naar de belangrijkste componenten van de one-carbon cycle (1CC), zoals foliumzuur, homocysteïne, methionine, serine, glycine en vitamine B12, in deze context.
+
+## Methode
+
+**Studieopzet**
+
+Deze studie werd goedgekeurd door de ethische commissie van het Royan Institute (IR.ACECR.ROYAN.REC.1399.084) en uitgevoerd aan het Royan Institute of Animal Biotechnology in Isfahan, Iran. Dertig volwassen mannelijke NMRI-muizen (6-8 weken, 30±5 g) werden verdeeld in vijf groepen.
+
+**Behandelingsgroepen**
+
+1. Controlegroep (C)
+2. Shamgroep (Sa) - zoutoplossing
+3. Paroxetinegroep (Par) - 7 mg/kg
+4. Depressie geïnduceerd door stressgroep (S)
+5. Depressiegroep behandeld met paroxetine (SP)
+
+**Paroxetine Toediening**
+
+Mice kregen dagelijks 7mg/kg paroxetine via gavage gedurende 35 dagen.
+
+**Forced Swim Test (FST)**
+
+De Forced Swim Test (FST) werd gebruikt als model voor de inductie van een depressieve toestand bij knaagdieren. De test werd vier keer per week uitgevoerd gedurende vier weken, gevolgd door video-opnames voor gedragsanalyse. Antidepressieve behandeling begon 24 uur na de vierde zwemtest.
+
+**Histologische Beoordelingen**
+
+Na 35 dagen werden muizen gewogen, organen gedisseceerd en histologische beoordelingen uitgevoerd op testes. Testiculaire parameters, waaronder Johnsen-score, tubulaire differentiatie-index (TDI) en spermatogene index (SPI), werden geëvalueerd.
+
+**Apoptose en Caspase-3 Assay**
+
+Twee belangrijke apoptotische markers, TUNEL en caspase-3, werden beoordeeld op testiculaire weefselsecties.
+
+**Hormoon- en 1CC-componentevaluatie**
+
+Bloedplasma werd opgeslagen voor evaluatie van FSH, LH en componenten van de een-koolstof-cyclus (1CC) zoals foliumzuur, vitamine B12, methionine, homocysteïne, glycine en serine.
+
+**Sperma Voorbereiding en Evaluatie**
+
+Sperma werden verzameld en beoordeeld voor concentratie, motiliteit, morfologie en functionele tests zoals membranale lipidenperoxidatie, nucleaire protaminatie, nucleaire histoninhoud en DNA-integriteit.
+
+
+## Resultaten
+
+**Gewichts- en Morfometrische Parameters**
+
+- Geen significante verschillen in lichaamsgewicht, niergewicht, zaadblaasjesgewicht, testiculair gewicht, epididymale lengte en testiculaire volume tussen groepen.
+- Levergewicht significant hoger in de paroxetine-behandelde groep depressieve dieren (2 g ± 0.7) in vergelijking met de controlegroep (2 g ± 0.1) en de (zoutoplossing) shamgroep (2 g ± 0.1) (p<0.05).
+
+**Histologische Beoordeling van Testis**
+
+- Geen significante verschillen in Johnsen-score tussen groepen.
+- Tubulaire differentiatie-index (TDI) significant lager in de paroxetinegroep.
+- Spermatogene index (SPI) significant verminderd in de depressieve dieren behandeld met paroxetine.
+
+**Apoptotische Markers (TUNEL en Caspase-3)**
+
+- Sterkste apoptotische schade in paroxetine- en depressiegroepen in vergelijking met de controlegroep, zoutoplossing en depressie plus paroxetinegroepen.
+
+**Spermakarakters en -functietests**
+
+- Mean sperm concentration en totale beweeglijkheid significant verminderd in paroxetine- en depressiegroepen.
+- Hogere percentages spermatozoa met abnormale morfologie, verhoogd histonengehalte, verminderd protaminegehalte en hogere niveaus van lipidenperoxidatie in deze paroxetine- en depressiegroepen (p<0.05).
+- Alleen de paroxetinegroep vertoonde een significant hogere waarde voor spermadna-beschadiging.
+
+**Evaluatie van Plasma FSH, LH en 1CC-componenten**
+
+- FSH- en LH-niveaus significant hoger in de paroxetine- en depressie + paroxetinegroepen.
+- Folaatniveau significant hoger in de depressie + paroxetinegroep.
+- Homocysteïneniveau significant hoger in de paroxetinegroep.
+- Glycineniveau significant lager in paroxetine- en depressie plus paroxetinegroepen.
+- Vitamine B12-niveau significant lager in de paroxetine- en depressie plus paroxetinegroepen vergeleken met de andere groepen (p<0.05).
+
+## Data
+Data is gegeven in een excel bestand hiervan een foto:
+
+```{r, echo=FALSE}
+#install.packages("png")
+#install.packages("gridExtra")
+library(png)
+library(grid)
+library(gridExtra)
+library(tidyverse)
+img1 <-  rasterGrob(as.raster(readPNG("~/Excel_afbeelding_data_antidepressiva.png")))
+grid.arrange(img1, ncol=1, top=textGrob("Ruwe data van het experiment", gp=gpar(fontsize=9,font=8)))
+```
